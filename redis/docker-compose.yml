@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  redis-stack:
+    image: redis/redis-stack:7.4.0-v3
+    container_name: redis-stack
+    restart: unless-stopped
+    ports:
+      - "6379:6379"   # Redis data & commands
+      - "8001:8001"   # RedisInsight & Stack UI
+    volumes:
+      - redis-stack-data:/data
+
+volumes:
+  redis-stack-data:
